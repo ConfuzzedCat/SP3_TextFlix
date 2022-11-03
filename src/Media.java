@@ -21,10 +21,9 @@ public Media(int releaseYear, String name, ArrayList<Category> category, double 
 }
 
 
-    public abstract void watch() {
-        return;
+    public abstract void watch();
 
-    }
+
 
     public void watchLater(User user) {
         return;
