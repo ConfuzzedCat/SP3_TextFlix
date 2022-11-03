@@ -28,7 +28,6 @@ FileIO : + public void saveData(String[] content, String path);
 TextUI : + public static void sendMessage(String text)
 TextUI : + public static void sendMultipleMessages(String[] lines)
 TextUI : + public static void endObjectAsMessage(Object obj);
-TextUI : + public static string getUserInputMultipleChoice(string prompt, String[] choices);
 
 
 Catalogue : + public void showCatalogue(User user);
@@ -50,9 +49,16 @@ Account : + public static void login(String username, String password);
 
 Menu : + public void showMenu();
 
+LibraryMenu : +
+StartMenu : +
+MainMenu : +
+
+
 Series : ArrayList <Seasons>
 Series : + public void toString();
+Series : + public void watch()
 
+Movies : + public void toString();
 Movies : + public void toString();
 
 Seasons : int episodes

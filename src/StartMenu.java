@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class StartMenu {
+public class StartMenu implements Menu {
 
     public void menu(){
 
@@ -41,6 +41,11 @@ public class StartMenu {
                 break;
 
         }
+    }
+
+    @Override
+    public void showMenu() {
+
     }
 }
 
