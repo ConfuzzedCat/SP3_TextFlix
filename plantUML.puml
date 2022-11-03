@@ -1,0 +1,86 @@
+@startuml
+
+class main
+class User
+abstract class Media
+class Series
+class Seasons
+class Movies
+class Catalogue
+class Parser
+class FileIO
+class TextUI
+interface Menu
+class LibraryMenu
+class MainMenu
+class StartMenu
+
+main : static void
+
+FileIO : + scanner.File()
+FileIO : + public String[] getLinesFromFile(String path);
+FileIO : + public String getTextFromFile(String path);
+FileIO : + public void saveData(String content, String path);
+FileIO : + public void saveData(String[] content, String path);
+
+
+
+TextUI : + public static void sendMessage(String text)
+TextUI : + public static void sendMultipleMessages(String[] lines)
+TextUI : + public static void endObjectAsMessage(Object obj);
+TextUI : + public static string getUserInputMultipleChoice(string prompt, String[] choices);
+
+
+Catalogue : + public void showCatalogue(User user);
+Catalogue : + public void getMediaInfo(Media media);
+
+User : boolean isAdult
+User : string UserName
+User : ArrayList SavedMovies<MyList>
+User : ArrayList PrevWatchedMovies
+
+Parser : + public ArrayList<Media> parseDataFromJsonMedia(string data);
+Parser : + public ArrayList<Media> parseDataMedia(string[] data);
+Parser : + public Account parseDataFromJsonAccount(string data);
+Parser : + public Account parseDataAccount(string[] data);
+Parser : + public String deserializeData(ArrayList<Media> data);
+Parser : +public String deserializeData(Account data);
+
+Account : + public static void login(String username, String password);
+
+Menu : + public void showMenu();
+
+Series : ArrayList <Seasons>
+Series : + public void toString();
+
+Movies : + public void toString();
+
+Seasons : int episodes
+
+Media : int ReleaseYear
+Media : string Name
+Media : enum Category
+Media : double Rating
+Media : + public abstract void watch();
+Media : + public void watchLater(User user);
+Media : + public void removeFromWatchLater(User user);
+Media : + public void addToPrevWatched(User user);
+
+main --* Parser
+main --* Catalogue
+main --* FileIO
+main --* TextUI
+main --* Media
+main --* User
+main --* Menu
+main --* Account
+
+Menu <|-- LibraryMenu : is a
+Menu <|-- StartMenu : is a
+Menu <|-- MainMenu : is a
+
+Media <|-- Series : is a
+Media <|-- Movies : is a
+
+
+@enduml
