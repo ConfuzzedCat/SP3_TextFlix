@@ -7,15 +7,59 @@ public class Account {
     private String lastName;
     private String userName;
     private String password;
-    private String emailId;
+    private String email;
 
-    public Account(String firstName, String lastName, String userName, String password, String emailId, ArrayList<User> users) {
+    public Account(String firstName, String lastName, String userName, String password, String email, ArrayList<User> users) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
-        this.emailId = emailId;
+        this.email = email;
         this.users = users;
+    }
+    private Account(){
+
+    }
+
+    public static Account register(){
+       Account newAccount = new Account();
+
+        newAccount.firstName = TextUI.getUserInput("Please enter your first name. ");
+        newAccount.lastName =  TextUI.getUserInput("Please enter your last name. ");
+        newAccount.userName =  TextUI.getUserInput("Please enter your user name. ");
+        newAccount.email =  TextUI.getUserInput("Please enter your email. ");
+        newAccount.password =  TextUI.getUserInput("Please enter your password. ");
+        newAccount.users = new ArrayList<>();
+        newAccount.users.add(new User());
+        TextUI.sendMessage("Registration was successful!");
+        /*
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print(" Enter firstName => ");
+            String firstName = scanner.nextLine();
+            register.setFirstName(firstName);
+
+            System.out.print(" Enter lastName => ");
+            String lastName = scanner.nextLine();
+            register.setLastName(lastName);
+
+            System.out.print(" Enter userName => ");
+            String userName = scanner.nextLine();
+            register.setUserName(userName);
+
+            System.out.print(" Enter password => ");
+            String password = scanner.nextLine();
+            register.setPassword(password);
+
+            System.out.print(" Enter emailId => ");
+            String emailId = scanner.nextLine();
+            register.setEmailId(emailId);
+
+            System.out.println("\n*****************************\n ");
+            System.out.println("Registrations are successful!");
+            System.out.println(register.toString());
+        }
+         */
+        return newAccount;
     }
 
     public boolean login(String username, String password){
