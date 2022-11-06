@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class StartMenu implements Menu {
 
     public void menu(){
+        //TODO: use Text
 
         System.out.println("Welcome to TextFlix!");
         System.out.println("Please Login or Register.");
@@ -14,11 +15,12 @@ public class StartMenu implements Menu {
         switch(choice.toLowerCase()){
             case "login":
             System.out.println("Type username");
-            scanner.nextLine();
+            String username = scanner.nextLine();
                 System.out.println("Type password");
-                scanner.nextLine();
+                String password = scanner.nextLine();
+                Main.setCurrentAccount(Account.login(username, password));
 
-                //TODO
+                //TODO:
                 /*
                 if(username&&password == correct){
                     grant access lol
@@ -26,12 +28,9 @@ public class StartMenu implements Menu {
                 */
                 break;
             case "register":
-                System.out.println("To register please type a username");
-                scanner.nextLine();
-                System.out.println("Please type a password");
-                scanner.nextLine();
+                Main.setCurrentAccount(Account.register());
 
-                //TODO
+                //TODO:
                 // Giv adgang til brugeren
 
                 break;

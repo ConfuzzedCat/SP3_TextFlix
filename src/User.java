@@ -30,14 +30,10 @@ public class User {
             String input = TextUI.getUserInput("Are you over 18? (Y)es / (N)o.");
             switch (input.toLowerCase()){
                 case "y":
-                    this.isAdult = true;
-                    break;
-                case "n":
-                    this.isAdult = false;
-                    break;
                 case "yes":
                     this.isAdult = true;
                     break;
+                case "n":
                 case "no":
                     this.isAdult = false;
                     break;

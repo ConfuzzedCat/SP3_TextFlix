@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Account {
+    private static ArrayList<Account> accounts;
     private ArrayList<User> users;
     private String firstName;
     private String lastName;
@@ -18,20 +19,35 @@ public class Account {
         this.users = users;
     }
     private Account(){
-
-    }
-
-    public static Account register(){
-       Account newAccount = new Account();
-
-        newAccount.firstName = TextUI.getUserInput("Please enter your first name. ");
-        newAccount.lastName =  TextUI.getUserInput("Please enter your last name. ");
-        newAccount.userName =  TextUI.getUserInput("Please enter your user name. ");
-        newAccount.email =  TextUI.getUserInput("Please enter your email. ");
-        newAccount.password =  TextUI.getUserInput("Please enter your password. ");
-        newAccount.users = new ArrayList<>();
-        newAccount.users.add(new User());
+        this.firstName = TextUI.getUserInput("Please enter your first name. ");
+        this.lastName =  TextUI.getUserInput("Please enter your last name. ");
+        this.userName =  TextUI.getUserInput("Please enter your user name. ");
+        this.email =  TextUI.getUserInput("Please enter your email. ");
+        this.password =  TextUI.getUserInput("Please enter your password. ");
+        this.users = new ArrayList<>();
+        this.users.add(new User());
         TextUI.sendMessage("Registration was successful!");
+    }
+    private Account(String userName, String password){
+        this.firstName = TextUI.getUserInput("Please enter your first name. ");
+        this.lastName =  TextUI.getUserInput("Please enter your last name. ");
+        this.userName =  userName;
+        this.email =  TextUI.getUserInput("Please enter your email. ");
+        this.password =  password;
+        this.users = new ArrayList<>();
+        this.users.add(new User());
+        TextUI.sendMessage("Registration was successful!");
+    }
+    public static void AddAccountToList(Account a){
+        accounts.add(a);
+    }
+    public static Account register(String username, String password){
+        Account newAccount = new Account(username, password);
+        return newAccount;
+    }
+    public static Account register(){
+        Account newAccount = new Account();
+        return newAccount;
         /*
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.print(" Enter firstName => ");
@@ -59,10 +75,17 @@ public class Account {
             System.out.println(register.toString());
         }
          */
-        return newAccount;
     }
-
-    public boolean login(String username, String password){
+    public static Account login(String username, String password){
+        for (Account a:accounts){
+            if(a.tryLogin(username, password)){
+                return a;
+            }
+        }
+        TextUI.sendMessage("No account found. Will start register you now.");
+        return register(username, password);
+    }
+    private boolean tryLogin(String username, String password){
 
         //TODO: Brug TextUI.getUserInput istedet!
         Scanner scan = new Scanner(System.in);
