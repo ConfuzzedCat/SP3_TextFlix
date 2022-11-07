@@ -8,7 +8,14 @@ StartMenu -> Account : register
 Account -> User : getNickname
 Account -> User : boolean askIfAdult
 
-User -> LibraryMenu :
+User -> LibraryMenu : showMenu(Kids)
+User -> LibraryMenu : showMenu(All)
+
+LibraryMenu -> Media : watch
+LibraryMenu -> Media : watchLater
+LibraryMenu -> Media : addToWatchLater
+
+
 
 
 @enduml
