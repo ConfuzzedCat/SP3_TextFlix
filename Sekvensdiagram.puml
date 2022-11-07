@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+StartMenu -> Account : login
+StartMenu -> Account : register
+
+Account -> User : getNickname
+Account -> User : boolean askIfAdult
+
+User -> LibraryMenu :
+
+
+@enduml

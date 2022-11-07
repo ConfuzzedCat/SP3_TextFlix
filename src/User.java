@@ -1,3 +1,6 @@
+//fix
+// fix
+
 public class User {
     private String nickname;
     private boolean isAdult;

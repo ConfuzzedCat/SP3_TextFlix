@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+//fix
+// fix
+
 public class Serie extends Media {
 
     //TODO: orden arraylist af seasons

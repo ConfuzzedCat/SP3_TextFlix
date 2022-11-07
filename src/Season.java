@@ -1,4 +1,8 @@
 // TODO: udfyld season
+
+//fix
+// fix
+
 public class Season {
     int seasonNumber;
     int episodes;
