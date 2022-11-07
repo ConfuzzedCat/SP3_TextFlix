@@ -1,5 +1,6 @@
 import javax.xml.soap.Text;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 //fix
 
@@ -11,6 +12,23 @@ public class Account {
     private String userName;
     private String password;
     private String email;
+    private ArrayList<Serie> currentlyWatchingSeries;
+
+    public void addSeriesToCurrentlyWatchingSeries(Serie currentSerie, Season currentSeason, int currentEpisode){
+    for(int i = 0; i < currentlyWatchingSeries.size(); i++){
+        if(currentlyWatchingSeries.get(i).name.equalsIgnoreCase(currentSerie.name)){
+
+        }
+    }
+    currentlyWatchingSeries.add(new Serie(currentSerie.releaseYear,currentSerie.name,currentSerie.categories,currentSerie.rating,currentSerie.endYear,new ArrayList<>(Arrays.asList(currentSeason))));
+    }
+    public ArrayList<Serie> getCurrentlyWatchingSeries() {
+        return currentlyWatchingSeries;
+    }
+
+    public void setCurrentlyWatchingSeries(ArrayList<Serie> currentlyWatchingSeries) {
+        this.currentlyWatchingSeries = currentlyWatchingSeries;
+    }
 
     public Account(String firstName, String lastName, String userName, String password, String email, ArrayList<User> users) {
         this.firstName = firstName;
