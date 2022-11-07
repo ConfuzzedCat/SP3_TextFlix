@@ -14,12 +14,12 @@ public class Serie extends Media {
         Seasons = seasons;
     }
 
-    //TODO: Gøres pænt senere
+    //TODO Gøres pænt senere
     @Override
     public String toString() {
         return "Series" +
                 ", " + name + '\'' +
-                ", " + category +
+                ", " + categories +
                 ", rating: " + rating +
                 "Year of release: " + releaseYear +
                 '}';

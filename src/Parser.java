@@ -25,23 +25,31 @@ public class Parser {
             String[] values = s.split(";");
             String mediaName = values[0];
             String[] years = values[1].split("-");
-            int releaseYear = Integer.parseInt(years[0]);
+            int releaseYear = Integer.parseInt(years[0].replace(" ",""));
             int endYear = -1;
             if(years.length > 1){
-                endYear = Integer.parseInt(years[1]);
+                String temp = years[1].replace(" ","");
+                if(!temp.isEmpty()) {
+                    endYear = Integer.parseInt(temp);
+                    //TODO Fix "temp" hvis ønskes.
+                }
             }
-            //TODO: får de rigtige category
-            String[] categoreis = values[2].split(",");
+            //TODO: får de rigtige category+-
+            String[] categoriesData = values[2].split(",");
+            ArrayList<Category> categories = new ArrayList<>();
+            for(String s_ : categoriesData) {
+                categories.add(Category.findCategory(s_));
+            }
 
-            double rating = Double.parseDouble(values[3]);
+            double rating = Double.parseDouble(values[3].replace(",","."));
             Media m;
-            //TODO: fix at den ikke bare laver en tom arraylist for category
+
             if(values.length > 4){
                 ArrayList<Season> seasons = parseSeasonDataFromCsv(values[4]);
-                m = new Serie(releaseYear, mediaName, new ArrayList<>(), rating, endYear, seasons);
+                m = new Serie(releaseYear, mediaName, categories, rating, endYear, seasons);
             }
             else {
-                m = new Movie(releaseYear, mediaName, new ArrayList<>(), rating);
+                m = new Movie(releaseYear, mediaName, categories, rating);
             }
             media.add(m);
         }
@@ -85,7 +93,7 @@ public class Parser {
         String[] values = data.split(",");
         for(int i = 0; i < values.length; i++){
             String[] seasonAndEpisode = values[i].split("-");
-            returnData.add(new Season(Integer.parseInt(seasonAndEpisode[0]), Integer.parseInt(seasonAndEpisode[1])));
+            returnData.add(new Season(Integer.parseInt(seasonAndEpisode[0].replace(" ","")), Integer.parseInt(seasonAndEpisode[1].replace(" ",""))));
         }
         return returnData;
     }

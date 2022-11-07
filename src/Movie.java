@@ -9,12 +9,12 @@ public class Movie extends Media {
         super(releaseYear, name, category, rating);
     }
 
-    //TODO: Gøres pænt senere
+    //TODO Gøres pænt senere
     @Override
     public String toString() {
         return "Movie " +
                 ", " + name + '\'' +
-                ", " + category +
+                ", " + categories +
                 ", rating: " + rating +
                 "Year of release: " + releaseYear +
                 '}';

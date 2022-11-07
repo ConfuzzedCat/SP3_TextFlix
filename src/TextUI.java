@@ -51,6 +51,5 @@ public class TextUI {
     public static void sendMessage(String msg) {
         System.out.println("*********************");
         System.out.println(msg);
-        System.out.println("*********************");
     }
 }
