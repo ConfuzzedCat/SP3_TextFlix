@@ -6,6 +6,7 @@ public class Main {
         for(Media m : Catalogue.searchMedia(Category.CRIME)){
         m.showInfo();
         }
+        currentMenu = new StartMenu();
         /*StartMenu sm = new StartMenu();
         sm.menu();*/
 
@@ -14,6 +15,16 @@ public class Main {
 
     public static Account getCurrentAccount() {
         return currentAccount;
+    }
+
+    private static Menu currentMenu;
+
+    public static Menu getCurrentMenu() {
+        return currentMenu;
+    }
+
+    public static void setCurrentMenu(Menu currentMenu) {
+        Main.currentMenu = currentMenu;
     }
 
     public static void setCurrentAccount(Account currentAccount) {

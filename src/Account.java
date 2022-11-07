@@ -52,7 +52,9 @@ public class Account {
         return newAccount;
 
     }
-    public static Account login(String username, String password){
+    public static Account login(){
+        String username = TextUI.getUserInput("Please type your username.");
+        String password = TextUI.getUserInput("Please type your password.");
         for (Account a:accounts){
             if(a.tryLogin(username, password)){
                 return a;
@@ -64,10 +66,11 @@ public class Account {
     private boolean tryLogin(String username, String password){
 
 
+        // TODO Victor fix this
         String input = TextUI.getUserInput("Please type your username.");
 
         if(input.equalsIgnoreCase(username)){
-            input = TextUI.getUserInput("Please type your password.");
+
             while (!input.equals(password)){
 
                 TextUI.sendMessage("\nCredentials is correct!");

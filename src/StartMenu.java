@@ -5,30 +5,18 @@ import java.util.Scanner;
 
 public class StartMenu implements Menu {
 
-    public void menu(){
+    public void showMenu(){
         //TODO: use Text
 
-        System.out.println("Welcome to TextFlix!");
-        System.out.println("Please Login or Register.");
-        System.out.println("If you want to Login type: Login\nIf you want to register type: Register");
+        TextUI.sendMessage("Welcome to TextFlix!");
+        TextUI.sendMessage("Please Login or Register.");
 
-        Scanner scanner = new Scanner(System.in);
-        String choice = scanner.nextLine();
+        String choice = TextUI.getUserInput("If you want to Login type: Login\\nIf you want to register type: Register\"");
 
         switch(choice.toLowerCase()){
             case "login":
-            System.out.println("Type username");
-            String username = scanner.nextLine();
-                System.out.println("Type password");
-                String password = scanner.nextLine();
-                Main.setCurrentAccount(Account.login(username, password));
+                Main.setCurrentAccount(Account.login());
 
-                //TODO:
-                /*
-                if(username&&password == correct){
-                    grant access lol
-                }
-                */
                 break;
             case "register":
                 Main.setCurrentAccount(Account.register());
@@ -39,16 +27,22 @@ public class StartMenu implements Menu {
                 break;
 
             default:
-                System.out.println("Invalid number");
+                TextUI.sendMessage("Invalid input.");
                 break;
 
         }
     }
 
-    @Override
-    public void showMenu() {
-
+    public StartMenu() {
+        this.showMenu();
     }
+
+    @Override
+    public void goBack() {
+    System.exit(1);
+    }
+
+
 }
 
 

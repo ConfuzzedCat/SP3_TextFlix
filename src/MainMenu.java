@@ -5,6 +5,15 @@ import java.util.Arrays;
 // fix
 
 public class MainMenu implements Menu {
+    public MainMenu() {
+        this.showMenu();
+    }
+
+    @Override
+    public void goBack() {
+        Main.setCurrentMenu(new StartMenu());
+    }
+
     public void showMenu(){
        TextUI.sendMessage("\nWelcome To TextFlix!\n");
 
