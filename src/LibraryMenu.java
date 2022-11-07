@@ -2,6 +2,8 @@
 //
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LibraryMenu implements Menu {
 
@@ -17,7 +19,21 @@ public class LibraryMenu implements Menu {
 
     @Override
     public void showMenu() {
-        //TODO: udfyld method krop
+       ArrayList<Category> allCategories = new ArrayList<>(Arrays.asList(Category.values()));
+       String buffer = "";
+       for(Category c : allCategories){
+           buffer += c.toString()+", ";
+       }
+       TextUI.sendMessage(buffer);
+
+        String input = TextUI.getUserInput("Hvilken genre vil du gerne se?");
+        Category searchCategory = Category.findCategory(input);
+
+        ArrayList<Media> searchResult = Catalogue.searchMedia(searchCategory);
+        for(Media m : searchResult){
+            m.showInfo();
+        }
+        //TODO: Gør så man kan vælge de film man sorter efter.
     }
 }
 

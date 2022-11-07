@@ -2,12 +2,14 @@
 // fix
 public class Main {
     public static void main(String[] args) {
+        System.out.println(Category.HORROR.toString());
+/*
         Catalogue.setupAllMedia();
         for(Media m : Catalogue.searchMedia(Category.CRIME)){
         m.showInfo();
         }
         currentMenu = new StartMenu();
-        /*StartMenu sm = new StartMenu();
+        StartMenu sm = new StartMenu();
         sm.menu();*/
 
     }
