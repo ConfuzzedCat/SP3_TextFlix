@@ -10,3 +10,4 @@ public class LibraryMenu implements Menu {
         //TODO: udfyld method krop
     }
 }
+

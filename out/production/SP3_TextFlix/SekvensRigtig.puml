@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> Main : Startup()/Setup()
+Main -> Account : checkPrevAccounts()
+
+Account -> FileIO : checkFile(filePath)
+FileIO -> Account : checkFile() = False
+
+Main -> StartMenu : showMenu
+StartMenu -> Account : register() = account a
+Account -> Main : setCurrentAccount(a)
+Main -> MainMenu : showMenu()
+MainMenu -> LibraryMenu : showMenu()
+LibraryMenu -> Catalogue : search(prompt)
+Catalogue -> Movie : showInfo(toString)
+Movie -> Movie : watch()
+Movie -> LibraryMenu : showMenu()
+LibraryMenu -> MainMenu : goBack()
+MainMenu -> StartMenu : goBack()
+StartMenu -> StartMenu : end of program...
+
+
+@enduml

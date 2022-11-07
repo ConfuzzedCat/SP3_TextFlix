@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class FileIO {
 
 
-    public ArrayList<String> readDataLines(String path) {
+    public static ArrayList<String> readDataLines(String path) {
 
         File file = new File(path);
 
@@ -28,7 +28,7 @@ public class FileIO {
         return data;
     }
 
-    public String readData(String path) {
+    public static String readData(String path) {
 
         File file = new File(path);
 
@@ -47,7 +47,8 @@ public class FileIO {
     }
 
 
-
+//TODO vi mangler en metode
+    //Write metode
 
 
 }
