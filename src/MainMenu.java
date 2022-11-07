@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class MainMenu implements menu {
-    public static void temp(){
+public class MainMenu implements Menu {
+    public void showMenu(){
        TextUI.sendMessage("\nWelcome To TextFlix!\n");
 
         ArrayList<String> list = new ArrayList<>(Arrays.asList("For user Management", "LibraryMenu", "Account", "Log out!"));
