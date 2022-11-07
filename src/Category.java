@@ -22,11 +22,11 @@ enum Category {
         MYSTERY,
         SPORT,
 
-}
+    }
 
-    class Main_Category {
+    public class Main {
         public static void main(String[] args) {
-            Category myCategory = Category.ADVENTURE;
+            Category myCategory = Category;
 
             switch(myCategory) {
                 case KIDS:
@@ -86,3 +86,5 @@ enum Category {
             }
         }
     }
+
+}
