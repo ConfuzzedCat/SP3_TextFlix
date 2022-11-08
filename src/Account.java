@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 public class Account {
     private static ArrayList<Account> accounts;
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
     private ArrayList<User> users;
     private String firstName;
     private String lastName;

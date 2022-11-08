@@ -4,8 +4,10 @@
 enum Category {
 //TODO Fix empty.
         EMPTY,
+        ACTION,
         KIDS,
         CRIME,
+        COMEDY,
         DRAMA,
         THRILLER,
         HORROR,
@@ -26,12 +28,18 @@ enum Category {
                 switch(s.toUpperCase().replace(" ","")){
                         case "KIDS":
                                 return KIDS;
+                        case "ACTION":
+                                return ACTION;
                         case "CRIME":
                                 return CRIME;
                         case "THRILLER":
                                 return THRILLER;
+                        case "COMEDY":
+                                return COMEDY;
                         case "HORROR":
                                 return HORROR;
+                        case "DRAMA":
+                                return DRAMA;
                         case "ADVENTURE":
                                 return ADVENTURE;
                         case "ROMANCE":
@@ -46,13 +54,13 @@ enum Category {
                                 return MUSICAL;
                         case "BIOGRAPHY":
                                 return BIOGRAPHY;
-                        case "SCI_FI":
+                        case "SCI-FI":
                                 return SCI_FI;
                         case "HISTORY":
                                 return HISTORY;
                         case "MUSIC":
                                 return MUSIC;
-                        case "FILM_NOIR":
+                        case "FILM-NOIR":
                                 return FILM_NOIR;
                         case "MYSTERY":
                                 return MYSTERY;

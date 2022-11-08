@@ -44,7 +44,7 @@ public class TextUI {
 
     }
 
-    public static void sendObejctAsMessage(Object obj){
+    public static void sendObjectAsMessage(Object obj){
         sendMessage(obj.toString());
     }
 
