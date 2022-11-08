@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,7 +40,7 @@ public class FileIO {
             Scanner scan = new Scanner(file);
             scan.nextLine();
             while (scan.hasNextLine()) {
-               data = data.concat(scan.nextLine()+ "/n");
+                data = data.concat(scan.nextLine() + "/n");
             }
         } catch (FileNotFoundException e) {
             data = null;
@@ -46,10 +48,18 @@ public class FileIO {
         return data;
     }
 
+    public static boolean writeToFile(String path, String content) {
 
-//TODO vi mangler en metode
-    //Write metode
+        try {
+            FileWriter writer = new FileWriter(path);
+            writer.write(content);
 
+            writer.close();
 
+        } catch (IOException e) {
+            TextUI.sendMessage(e.toString());
+        }
+
+        return true;
+    }
 }
-

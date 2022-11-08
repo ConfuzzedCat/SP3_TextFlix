@@ -25,6 +25,7 @@ public class TextUI {
     public static String getUserInput(String text){
         sendMessage(text);
         String input = scan.nextLine();
+        consumeLine();
         return input;
     }
 
@@ -43,6 +44,7 @@ public class TextUI {
             sendMessage(i+1+". "+options.get(i));
         }
         int choice = scan.nextInt();
+        consumeLine();
         return choice;
 
     }
@@ -61,6 +63,7 @@ public class TextUI {
             sendMessage(i+1+". "+multipleChoicesMedia.get(i).toString());
         }
         int choice = scan.nextInt();
+        consumeLine();
         return multipleChoicesMedia.get(choice -1);
     }
 }
