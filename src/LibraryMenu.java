@@ -30,10 +30,11 @@ public class LibraryMenu implements Menu {
         Category searchCategory = Category.findCategory(input);
 
         ArrayList<Media> searchResult = Catalogue.searchMedia(searchCategory);
-        for(Media m : searchResult){
-            m.showInfo();
-        }
+        Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Hvilken af disse film vil du se?",searchResult);
+
+        moviePickChoice.watch();
         //TODO: Gør så man kan vælge de film man sorter efter.
+
     }
 }
 

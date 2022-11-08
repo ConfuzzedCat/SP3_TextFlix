@@ -2,9 +2,10 @@
 // fix
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Category.HORROR.toString());
-/*
         Catalogue.setupAllMedia();
+
+        new LibraryMenu();
+/*
         for(Media m : Catalogue.searchMedia(Category.CRIME)){
         m.showInfo();
         }

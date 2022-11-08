@@ -33,7 +33,7 @@ public class TextUI {
 
     public static int getUserInput(String msg, ArrayList<String> options){
 
-        System.out.println(msg);
+        sendMessage(msg);
 
         for(int i = 0; i<options.size(); i++){
 
@@ -51,5 +51,13 @@ public class TextUI {
     public static void sendMessage(String msg) {
         System.out.println("*********************");
         System.out.println(msg);
+    }
+    public static Media sendMultipleChoicesMedia(String msg, ArrayList<Media> multipleChoicesMedia){
+        sendMessage(msg);
+        for(int i = 0; i < multipleChoicesMedia.size(); i++){
+            sendMessage(i+1+". "+multipleChoicesMedia.get(i).toString());
+        }
+        int choice = scan.nextInt();
+        return multipleChoicesMedia.get(choice -1);
     }
 }
