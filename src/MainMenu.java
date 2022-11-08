@@ -28,7 +28,7 @@ public class MainMenu implements Menu {
             int choice = TextUI.getUserInput("Please choose one is the option:", list);
             switch (choice) {
                 case 1:
-                    TextUI.sendMessage("For user Management");
+                    TextUI.sendMessage("User-settings");
                     tryAgain = false;
                     break;
                 case 2:

@@ -22,6 +22,6 @@ public class Movie extends Media {
 
     @Override
     public void watch() {
-    TextUI.sendMessage("Du ser nu: "+ name);
+    TextUI.sendMessage("You are now watching: "+ name);
     }
 }

@@ -26,15 +26,15 @@ public class LibraryMenu implements Menu {
        }
        TextUI.sendMessage(buffer);
 
-        String input = TextUI.getUserInput("Hvilken genre vil du gerne se?");
+        String input = TextUI.getUserInput("Pick a category.");
         Category searchCategory = Category.findCategory(input);
 
         ArrayList<Media> searchResult = Catalogue.searchMedia(searchCategory);
-        Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Hvilken af disse film vil du se?",searchResult);
+        Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Choose a movie.",searchResult);
 
         moviePickChoice.watch();
         TextUI.consumeLine();
-        String inputChoice = TextUI.getUserInput("Hvad vil du nu?\nBrowse andre film? (1)\nGå tilbage til Main Menu (2)");
+        String inputChoice = TextUI.getUserInput("What's next?\nBrowse other movies? (1)\nBack to Main menu(2)");
 
         switch (inputChoice){
             case "1":
