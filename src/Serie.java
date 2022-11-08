@@ -14,8 +14,11 @@ public class Serie extends Media {
         Seasons = seasons;
     }
 
+    //TODO Rasmus gør den her toString pænt. Hvis "endYear" er "-1" så er serien ikke færdig.
+    //
     @Override
     public String toString() {
+        // if.....
         return "Series" +
                 ", " + name + ',' +
                 " " + categories +

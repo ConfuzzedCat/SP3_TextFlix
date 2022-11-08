@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class StartMenu implements Menu {
 
     public void showMenu(){
-        //TODO: use Text
 
         TextUI.sendMessage("Welcome to TextFlix!");
         TextUI.sendMessage("Please Login or Register.");
@@ -16,13 +15,13 @@ public class StartMenu implements Menu {
         switch(choice.toLowerCase()){
             case "login":
                 Main.setCurrentAccount(Account.login());
+                new MainMenu();
 
                 break;
+
             case "register":
                 Main.setCurrentAccount(Account.register());
-
-                //TODO:
-                // Giv adgang til brugeren
+                new MainMenu();
 
                 break;
 

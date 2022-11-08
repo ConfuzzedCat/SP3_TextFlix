@@ -45,7 +45,7 @@ public class LibraryMenu implements Menu {
                 break;
 
         }
-        //TODO: Gør så man kan vælge de film man sorter efter.
+
 
     }
 }

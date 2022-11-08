@@ -19,6 +19,7 @@ public class Account {
     private String email;
     private ArrayList<Serie> currentlyWatchingSeries;
 
+    //TODO Færdiggør så den gemmer de serier man ser
     public void addSeriesToCurrentlyWatchingSeries(Serie currentSerie, Season currentSeason, int currentEpisode){
     for(int i = 0; i < currentlyWatchingSeries.size(); i++){
         if(currentlyWatchingSeries.get(i).name.equalsIgnoreCase(currentSerie.name)){

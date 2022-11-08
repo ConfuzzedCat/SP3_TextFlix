@@ -25,7 +25,7 @@ public class User {
         return isAdult;
     }
     public void askForNickname(){
-        this.nickname =  TextUI.getUserInput("What would like to call this user?");
+        this.nickname =  TextUI.getUserInput("Choose your nickname.");
     }
     public void askIfAdult(){
         boolean tryAgain = false;

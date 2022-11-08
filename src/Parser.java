@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * public ArrayList<Media> parseDataFromJsonMedia(string data);
  * public ArrayList<Media> parseDataMedia(string[] data);
  * public Account parseDataFromJsonAccount(string data);
- - public Account parseDataAccount(string[] data); //TODO: overvej om vi skal bruge denne.
  * public String serializeData(ArrayList<Media> data);
  * public String serializeData(Account data);
 */
@@ -31,10 +30,9 @@ public class Parser {
                 String temp = years[1].replace(" ","");
                 if(!temp.isEmpty()) {
                     endYear = Integer.parseInt(temp);
-                    //TODO Fix "temp" hvis ønskes.
                 }
             }
-            //TODO: får de rigtige category+-
+
             String[] categoriesData = values[2].split(",");
             ArrayList<Category> categories = new ArrayList<>();
             for(String s_ : categoriesData) {
