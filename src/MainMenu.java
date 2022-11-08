@@ -32,7 +32,7 @@ public class MainMenu implements Menu {
                     tryAgain = false;
                     break;
                 case 2:
-                    TextUI.sendMessage("LibraryMenu");
+                    new LibraryMenu();
                     tryAgain = false;
                     break;
                 case 3:

@@ -33,7 +33,7 @@ public class LibraryMenu implements Menu {
         Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Hvilken af disse film vil du se?",searchResult);
 
         moviePickChoice.watch();
-
+        TextUI.consumeLine();
         String inputChoice = TextUI.getUserInput("Hvad vil du nu?\nBrowse andre film? (1)\nGå tilbage til Main Menu (2)");
 
         switch (inputChoice){

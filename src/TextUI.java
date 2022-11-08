@@ -19,6 +19,9 @@ public class TextUI {
         prompts the user for one input value
         returns the input
     */
+    public static void consumeLine(){
+        scan.nextLine();
+    }
     public static String getUserInput(String text){
         sendMessage(text);
         String input = scan.nextLine();
