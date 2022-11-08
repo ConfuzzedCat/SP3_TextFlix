@@ -14,7 +14,6 @@ public class Serie extends Media {
         Seasons = seasons;
     }
 
-    //TODO Gøres pænt senere
     @Override
     public String toString() {
         return "Series" +

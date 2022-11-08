@@ -2,8 +2,11 @@
 // fix
 
 enum Category {
-//TODO Fix empty.
-        EMPTY,
+
+        UNDEFINED,
+        TALK_SHOW,
+        DOCUMENTARY,
+        ANIMATION,
         ACTION,
         KIDS,
         CRIME,
@@ -23,13 +26,22 @@ enum Category {
         MUSIC,
         FILM_NOIR,
         MYSTERY,
+        FANTASY,
         SPORT;
         public static Category findCategory(String s){
                 switch(s.toUpperCase().replace(" ","")){
                         case "KIDS":
                                 return KIDS;
+                        case "TALK-SHOW":
+                                return TALK_SHOW;
+                        case "DOCUMENTARY":
+                                return DOCUMENTARY;
+                        case "ANIMATION":
+                                return ANIMATION;
                         case "ACTION":
                                 return ACTION;
+                        case "FANTASY":
+                                return FANTASY;
                         case "CRIME":
                                 return CRIME;
                         case "THRILLER":
@@ -68,7 +80,7 @@ enum Category {
                                 return SPORT;
 
                 }
-                return EMPTY;
+                return UNDEFINED;
         }
 
 
