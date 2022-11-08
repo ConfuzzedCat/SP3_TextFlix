@@ -12,11 +12,11 @@ public class Movie extends Media {
     //TODO Gøres pænt senere
     @Override
     public String toString() {
-        return "Movie " +
-                ", " + name + '\'' +
-                ", " + categories +
+        return "Movie" +
+                ", " + name + ',' +
+                " " + categories +
                 ", rating: " + rating +
-                "Year of release: " + releaseYear +
+                ", Year of release: " + releaseYear +
                 '}';
     }
 

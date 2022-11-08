@@ -18,10 +18,10 @@ public class Serie extends Media {
     @Override
     public String toString() {
         return "Series" +
-                ", " + name + '\'' +
-                ", " + categories +
+                ", " + name + ',' +
+                " " + categories +
                 ", rating: " + rating +
-                "Year of release: " + releaseYear +
+                ", Year of release: " + releaseYear +
                 '}';
     }
 
