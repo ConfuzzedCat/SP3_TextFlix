@@ -1,6 +1,8 @@
 //fix
 // fix
 
+import sun.awt.HKSCS;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,6 +10,15 @@ public class User {
     private String nickname;
     private boolean isAdult;
     private ArrayList<Serie> currentlyWatchingSeries;
+   private ArrayList prevWatchedMedia = null;
+
+    public ArrayList getPrevWatchedMedia() {
+        return prevWatchedMedia;
+    }
+
+    public void setPrevWatchedMedia(ArrayList prevWatchedMedia) {
+        this.prevWatchedMedia = prevWatchedMedia;
+    }
 
     public User(String nickname, boolean isAdult) {
         this.nickname = nickname;
@@ -50,12 +61,12 @@ public class User {
 
         } while (tryAgain);
     }
-    public ArrayList<Media> prevWatchedMedia() {
-    if(){
 
+        public void prevWatchedMedia(Media watchedMedia) {
+        if(!prevWatchedMedia.contains(watchedMedia)){
+        prevWatchedMedia.add(watchedMedia);
     }
 
-        return null;
     }
 
 
