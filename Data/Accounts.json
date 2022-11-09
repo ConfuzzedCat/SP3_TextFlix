@@ -1,0 +1,30 @@
+[
+  {
+    "users": [
+      {
+        "nickname": "cat",
+        "isAdult": true,
+        "prevWatchedMedia": []
+      }
+    ],
+    "firstName": "victor",
+    "lastName": "Chritensen",
+    "userName": "cat",
+    "password": "1234",
+    "email": "cat@cat.com"
+  },
+  {
+    "users": [
+      {
+        "nickname": "st",
+        "isAdult": true,
+        "prevWatchedMedia": []
+      }
+    ],
+    "firstName": "v",
+    "lastName": "c",
+    "userName": "caG",
+    "password": "1234",
+    "email": "te"
+  }
+]

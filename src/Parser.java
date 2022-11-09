@@ -1,8 +1,12 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 //comment
 
+import java.io.StringReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
@@ -51,24 +55,23 @@ public class Parser {
 
     /// Json
     // Json -> Object
-    public static ArrayList<Media> parseDataFromJsonMedia(String data){
-        return stringToJson(data, ArrayList.class);
-    }
-    public static Account parseDataFromJsonAccount(String data){
-        return stringToJson(data, Account.class);
-    }
-    private static <T> T stringToJson(String data, Class<T> type){
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
-        Gson gson = builder.create();
-        return gson.fromJson(data, type);
+    public static ArrayList<Account> parseDataFromJsonAccount(String data){
+        Gson gson = new Gson();
+        Type listType = new TypeToken<ArrayList<Account>>(){}.getType();
+
+        ArrayList<Account> a = gson.fromJson(data, listType);
+        if(a == null){
+            return new ArrayList<>();
+        }
+
+        return a;
     }
 
     // Object -> Json
     public static String serializeMediaData(ArrayList<Media> data){
         return serializeData(data);
     }
-    public static String serializeAccountData(Account data){
+    public static String serializeAccountData(ArrayList<Account> data){
         return serializeData(data);
     }
     private static String serializeData(Object obj){

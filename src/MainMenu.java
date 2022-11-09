@@ -43,7 +43,8 @@ public class MainMenu implements Menu {
                     tryAgain = false;
                     break;
                 case 4:
-                    TextUI.sendMessage("Log out!");
+                    TextUI.sendMessage("You are now logged out!");
+                    new StartMenu(); // logout
                     tryAgain = false;
                     break;
                 default:

@@ -25,10 +25,13 @@ public class User {
         this.isAdult = isAdult;
         this.prevWatchedMedia = new ArrayList<>();
     }
-    public User() {
+    public User(boolean a) {
         askForNickname();
         askIfAdult();
         this.prevWatchedMedia = new ArrayList<>();
+
+    }
+    public User(){
 
     }
     public String getNickname() {

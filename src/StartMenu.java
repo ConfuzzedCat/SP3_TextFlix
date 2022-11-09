@@ -15,7 +15,7 @@ public class StartMenu implements Menu {
         TextUI.sendMessage("Welcome to TextFlix!");
         TextUI.sendMessage("Please Login or Register.");
 
-        String choice = TextUI.getUserInput("If you want to Login type: Login\\nIf you want to register type: Register\"");
+        String choice = TextUI.getUserInput("If you want to Login type: Login\nIf you want to register type: Register\nIf you want to close TextFlix: Exit");
 
         switch(choice.toLowerCase()){
             case "login":
@@ -29,6 +29,8 @@ public class StartMenu implements Menu {
                 new MainMenu();
 
                 break;
+            case "exit":
+                goBack();
 
             default:
                 TextUI.sendMessage("Invalid input.");

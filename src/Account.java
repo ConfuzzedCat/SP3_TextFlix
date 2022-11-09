@@ -7,16 +7,21 @@ import java.util.Arrays;
 public class Account {
     private static ArrayList<Account> accounts = new ArrayList<>();
 
+    public static void loadAccounts() {
+        String jsonAccounts = FileIO.readData("Data/Accounts.json");
+        accounts = Parser.parseDataFromJsonAccount(jsonAccounts);
+    }
+
     public ArrayList<User> getUsers() {
         return users;
     }
 
-    private ArrayList<User> users;
-    private String firstName;
-    private String lastName;
-    private String userName;
-    private String password;
-    private String email;
+    public ArrayList<User> users;
+    public String firstName;
+    public String lastName;
+    public String userName;
+    public String password;
+    public String email;
 
 
 
@@ -30,14 +35,6 @@ public class Account {
         this.users = users;
     }
     private Account(){
-        this.firstName = TextUI.getUserInput("Please enter your first name. ");
-        this.lastName =  TextUI.getUserInput("Please enter your last name. ");
-        this.userName =  TextUI.getUserInput("Please enter your user name. ");
-        this.email =  TextUI.getUserInput("Please enter your email. ");
-        this.password =  TextUI.getUserInput("Please enter your password. ");
-        this.users = new ArrayList<>();
-        this.users.add(new User());
-        TextUI.sendMessage("Registration was successful!");
     }
     private Account(String userName, String password){
         this.firstName = TextUI.getUserInput("Please enter your first name. ");
@@ -46,25 +43,33 @@ public class Account {
         this.email =  TextUI.getUserInput("Please enter your email. ");
         this.password =  password;
         this.users = new ArrayList<>();
-        this.users.add(new User());
+        this.users.add(new User(true));
         TextUI.sendMessage("Registration was successful!");
     }
     public static void AddAccountToList(Account a){
         accounts.add(a);
+        saveAccountData();
+    }
+    public static void saveAccountData(){
+        FileIO.writeToFile("Data/Accounts.json", Parser.serializeAccountData(accounts));
     }
     public static Account register(String username, String password){
         Account newAccount = new Account(username, password);
+        AddAccountToList(newAccount);
         return newAccount;
     }
     public static Account register(){
-        Account newAccount = new Account();
+        String username = TextUI.getUserInput("Please type your username.");
+        String password = TextUI.getUserInput("Please type your password.");
+        Account newAccount = new Account(username, password);
+        AddAccountToList(newAccount);
         return newAccount;
 
     }
     public static Account login(){
         String username = TextUI.getUserInput("Please type your username.");
         String password = TextUI.getUserInput("Please type your password.");
-        if(accounts.size() == 0 || accounts == null){
+        if( accounts == null || accounts.size() == 0){
             TextUI.sendMessage("No accounts in database, will start registering you now.");
             return register(username, password);
         }

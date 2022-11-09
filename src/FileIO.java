@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class FileIO {
 
 
@@ -17,8 +16,6 @@ public class FileIO {
 
         try {
             Scanner input = new Scanner(file);
-            input.nextLine();
-
             while (input.hasNextLine()) {
                 data.add(input.nextLine());
             }
@@ -36,9 +33,8 @@ public class FileIO {
 
         try {
             Scanner scan = new Scanner(file);
-            scan.nextLine();
             while (scan.hasNextLine()) {
-                data = data.concat(scan.nextLine() + "/n");
+                data = data.concat(scan.nextLine());
             }
         } catch (FileNotFoundException e) {
             data = null;

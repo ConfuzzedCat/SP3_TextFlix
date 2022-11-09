@@ -1,19 +1,12 @@
-
 public class Main {
     public static void main(String[] args) {
-        //setCurrentAccount(Account.register());
-        TextUI.sendMessage(Account.login().toString());
+        setup();
+        new StartMenu();
+        Account.saveAccountData();
+    }
+    public static void setup(){
+        Account.loadAccounts();
         Catalogue.setupAllMedia();
-
-        new LibraryMenu();
-/*
-        for(Media m : Catalogue.searchMedia(Category.CRIME)){
-        m.showInfo();
-        }
-        currentMenu = new StartMenu();
-        StartMenu sm = new StartMenu();
-        sm.menu();*/
-
     }
     private static Account currentAccount;
 
