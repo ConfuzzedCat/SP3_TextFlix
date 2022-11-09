@@ -2,7 +2,11 @@
 // fix
 public class Main {
     public static void main(String[] args) {
+<<<<<<< Updated upstream
         setCurrentAccount(Account.register());
+=======
+        TextUI.sendMessage(Account.login().toString());
+>>>>>>> Stashed changes
         Catalogue.setupAllMedia();
 
         new LibraryMenu();
