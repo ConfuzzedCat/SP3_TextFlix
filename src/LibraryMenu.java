@@ -19,6 +19,19 @@ public class LibraryMenu implements Menu {
 
     @Override
     public void showMenu() {
+        String inputChoice = TextUI.getUserInput("What's next?\nBrowse media? (1)\nRecently watched Media(2)\nBack to Main menu(3)");
+
+        switch (inputChoice){
+            case "1":
+                break;
+            case "2":
+            Main.getCurrentAccount().getUsers().get(0).showPreWatchedMedia();
+            case "3":
+                new MainMenu();
+                break;
+
+        }
+
        ArrayList<Category> allCategories = new ArrayList<>(Arrays.asList(Category.values()));
        String buffer = "";
        for(Category c : allCategories){
@@ -36,18 +49,9 @@ public class LibraryMenu implements Menu {
         //TODO Gør så man har mulighed for enten at se filmen eller gemme den i favorit
         moviePickChoice.watch();
         TextUI.consumeLine();
-        String inputChoice = TextUI.getUserInput("What's next?\nBrowse other movies? (1)\nBack to Main menu(2)");
 
-        switch (inputChoice){
-            case "1":
-                new LibraryMenu();
-                break;
-            case "2":
-                new MainMenu();
-                break;
-
-        }
-
+        
+        new LibraryMenu();
 
     }
 }

@@ -3,6 +3,7 @@
 
 
 
+import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,9 +11,9 @@ public class User {
     private String nickname;
     private boolean isAdult;
     private ArrayList<Serie> currentlyWatchingSeries;
-   private ArrayList prevWatchedMedia = null;
+   public ArrayList<Media> prevWatchedMedia;
 
-    public ArrayList getPrevWatchedMedia() {
+    public ArrayList<Media> getPrevWatchedMedia() {
         return prevWatchedMedia;
     }
 
@@ -62,11 +63,17 @@ public class User {
         } while (tryAgain);
     }
 
-        public void prevWatchedMedia(Media watchedMedia) {
+        public void addToWatchedMedia(Media watchedMedia) {
         if(!prevWatchedMedia.contains(watchedMedia)){
         prevWatchedMedia.add(watchedMedia);
     }
 
+    }
+    public void showPreWatchedMedia(){
+    for(Media m: prevWatchedMedia){
+
+        m.showInfo();
+    }
     }
 
 
@@ -79,12 +86,14 @@ public class User {
         this.currentlyWatchingSeries = currentlyWatchingSeries;
     }
 
+//TODO Fix til SP3+
     public void addSeriesToCurrentlyWatchingSeries(Serie currentSerie, Season currentSeason, int currentEpisode){
         for(int i = 0; i < currentlyWatchingSeries.size(); i++){
             if(currentlyWatchingSeries.get(i).name.equalsIgnoreCase(currentSerie.name)){
 
             }
         }
-        currentlyWatchingSeries.add(new Serie(currentSerie.releaseYear,currentSerie.name,currentSerie.categories,currentSerie.rating,currentSerie.endYear,new ArrayList<>(Arrays.asList(currentSeason))));
+        currentlyWatchingSeries.add(new Serie(currentSerie.releaseYear,currentSerie.name,
+                currentSerie.categories,currentSerie.rating,currentSerie.endYear,new ArrayList<>(Arrays.asList(currentSeason))));
     }
 }
