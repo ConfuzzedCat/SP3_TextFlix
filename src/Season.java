@@ -1,3 +1,4 @@
+//Seasons class, som bruges til Series.
 
 public class Season {
     int seasonNumber;

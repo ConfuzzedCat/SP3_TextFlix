@@ -1,6 +1,8 @@
 //fix
 // fix
 
+//Enums bruges hvis vi har pre-definerede værdier. Såsom film/serie-kategorier. Eller nord/syd/øst/vest på et kompass.
+//Eller ugedagene: man/tirs/onsdag osv.
 enum Category {
 
         UNDEFINED,

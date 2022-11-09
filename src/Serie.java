@@ -11,6 +11,8 @@ public class Serie extends Media {
         Seasons = seasons;
     }
 
+    //Det "visuelle" i terminalen når det køres. Vigtigt for brugeren at det står pænt og overskueligt.
+    //Forskel fra movies til series, er at serier har sæsoner som kører over flere år, og derfor også har et - muligt - endYear.
 
     @Override
     public String toString() {

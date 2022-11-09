@@ -9,6 +9,7 @@ public class Movie extends Media {
         super(releaseYear, name, category, rating);
     }
 
+//Det "visuelle" i terminalen når det køres. Vigtigt for brugeren at det står pænt og overskueligt.
 
     @Override
     public String toString() {
