@@ -29,6 +29,7 @@ public class LibraryMenu implements Menu {
                 break;
             case "2":
             Main.getCurrentAccount().getUsers().get(0).showPreWatchedMedia();
+            new LibraryMenu();
             break;
             case "3":
                 new MainMenu();
