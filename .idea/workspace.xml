@@ -4,7 +4,6 @@
     <list default="true" id="39f2c104-7075-4a02-a210-d93ecd2da295" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LibraryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +46,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/User.java</url>
-          <line>42</line>
+          <line>44</line>
           <properties class="User" method="askForNickname">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

@@ -26,6 +26,7 @@ public class LibraryMenu implements Menu {
                 break;
             case "2":
             Main.getCurrentAccount().getUsers().get(0).showPreWatchedMedia();
+            break;
             case "3":
                 new MainMenu();
                 break;
@@ -50,7 +51,7 @@ public class LibraryMenu implements Menu {
         moviePickChoice.watch();
         TextUI.consumeLine();
 
-        
+        Main.getCurrentAccount().getUsers().get(0).addToWatchedMedia(moviePickChoice); //Adder til vores prev watched
         new LibraryMenu();
 
     }

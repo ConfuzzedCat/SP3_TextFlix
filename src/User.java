@@ -3,7 +3,6 @@
 
 
 
-import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -24,10 +23,13 @@ public class User {
     public User(String nickname, boolean isAdult) {
         this.nickname = nickname;
         this.isAdult = isAdult;
+        this.prevWatchedMedia = new ArrayList<>();
     }
     public User() {
         askForNickname();
         askIfAdult();
+        this.prevWatchedMedia = new ArrayList<>();
+
     }
     public String getNickname() {
         return nickname;
