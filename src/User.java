@@ -51,12 +51,23 @@ public class User {
         } while (tryAgain);
     }
     public ArrayList<Media> prevWatchedMedia() {
+    if(){
 
+    }
 
         return null;
     }
 
+
     //TODO Færdiggør så den gemmer de serier man ser
+    public ArrayList<Serie> getCurrentlyWatchingSeries() {
+        return currentlyWatchingSeries;
+    }
+
+    public void setCurrentlyWatchingSeries(ArrayList<Serie> currentlyWatchingSeries) {
+        this.currentlyWatchingSeries = currentlyWatchingSeries;
+    }
+
     public void addSeriesToCurrentlyWatchingSeries(Serie currentSerie, Season currentSeason, int currentEpisode){
         for(int i = 0; i < currentlyWatchingSeries.size(); i++){
             if(currentlyWatchingSeries.get(i).name.equalsIgnoreCase(currentSerie.name)){

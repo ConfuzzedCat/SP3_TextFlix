@@ -19,13 +19,7 @@ public class Account {
     private String email;
 
 
-    public ArrayList<Serie> getCurrentlyWatchingSeries() {
-        return currentlyWatchingSeries;
-    }
 
-    public void setCurrentlyWatchingSeries(ArrayList<Serie> currentlyWatchingSeries) {
-        this.currentlyWatchingSeries = currentlyWatchingSeries;
-    }
 
     public Account(String firstName, String lastName, String userName, String password, String email, ArrayList<User> users) {
         this.firstName = firstName;
