@@ -5,13 +5,6 @@ import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
-/*
- * public ArrayList<Media> parseDataFromJsonMedia(string data);
- * public Array4List<Media> parseDataMedia(string[] data);
- * public Account parseDataFromJsonAccount(string data);
- * public String serializeData(ArrayList<Media> data);
- * public String serializeData(Account data);
-*/
 
 //TODO Victor - comments til Parser
 
