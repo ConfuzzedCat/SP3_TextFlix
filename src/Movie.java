@@ -16,8 +16,8 @@ public class Movie extends Media {
                 ", " + name + ',' +
                 " " + categories +
                 ", rating: " + rating +
-                ", Year of release: " + releaseYear +
-                '}';
+                ", release: " + releaseYear +
+                '.';
     }
 
     @Override
