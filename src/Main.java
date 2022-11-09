@@ -1,7 +1,8 @@
 
 public class Main {
     public static void main(String[] args) {
-        setCurrentAccount(Account.register());
+        //setCurrentAccount(Account.register());
+        TextUI.sendMessage(Account.login().toString());
         Catalogue.setupAllMedia();
 
         new LibraryMenu();

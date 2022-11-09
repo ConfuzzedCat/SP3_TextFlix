@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 
 public class Account {
-    private static ArrayList<Account> accounts;
+    private static ArrayList<Account> accounts = new ArrayList<>();
 
     public ArrayList<User> getUsers() {
         return users;
@@ -64,6 +64,10 @@ public class Account {
     public static Account login(){
         String username = TextUI.getUserInput("Please type your username.");
         String password = TextUI.getUserInput("Please type your password.");
+        if(accounts.size() == 0 || accounts == null){
+            TextUI.sendMessage("No accounts in database, will start registering you now.");
+            return register(username, password);
+        }
         for (Account a:accounts){
             if(a.tryLogin(username, password)){
                 return a;
@@ -73,21 +77,16 @@ public class Account {
         return register(username, password);
     }
     private boolean tryLogin(String username, String password){
+        if(this.userName.equalsIgnoreCase(username)){
 
+            while (!this.password.equals(password)){
 
-        // TODO Victor fix this
-        String input = TextUI.getUserInput("Please type your username.");
-
-        if(input.equalsIgnoreCase(username)){
-
-            while (!input.equals(password)){
-
-                TextUI.sendMessage("\nCredentials is correct!");
-
-                return true;
+                TextUI.sendMessage( "Password was incorrect, please try again!" );
+                password = TextUI.getUserInput("Please type your password again.");
             }
-            TextUI.sendMessage( "Password was incorrect, please try again!" );
-            return false;
+            TextUI.sendMessage("\nCredentials is correct!");
+            return true;
+
         }
         return false;
 

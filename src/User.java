@@ -10,7 +10,7 @@ public class User {
     private String nickname;
     private boolean isAdult;
     private ArrayList<Serie> currentlyWatchingSeries;
-   public ArrayList<Media> prevWatchedMedia;
+    public ArrayList<Media> prevWatchedMedia;
 
     public ArrayList<Media> getPrevWatchedMedia() {
         return prevWatchedMedia;

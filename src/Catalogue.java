@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Catalogue {
 public static ArrayList<Media> searchMedia(Category c) {
+
     ArrayList<Media> returnMedia = new ArrayList<>();
     for(Media m : allMedia){
         for (Category category: m.categories) {
