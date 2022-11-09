@@ -32,6 +32,8 @@ public class LibraryMenu implements Menu {
         ArrayList<Media> searchResult = Catalogue.searchMedia(searchCategory);
         Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Choose a movie.",searchResult);
 
+
+        //TODO Gør så man har mulighed for enten at se filmen eller gemme den i favorit
         moviePickChoice.watch();
         TextUI.consumeLine();
         String inputChoice = TextUI.getUserInput("What's next?\nBrowse other movies? (1)\nBack to Main menu(2)");

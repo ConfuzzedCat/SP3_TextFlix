@@ -1,6 +1,8 @@
 //fix
 // fix
 
+import java.util.ArrayList;
+
 public class User {
     private String nickname;
     private boolean isAdult;
@@ -45,5 +47,10 @@ public class User {
             }
 
         } while (tryAgain);
+    }
+    public ArrayList<Media> prevWatchedMedia() {
+        
+
+        return null;
     }
 }
