@@ -26,7 +26,7 @@ public Media(int releaseYear, String name, ArrayList<Category> categories, doubl
 
 
 
-
+// Metoderne bliver brugt i SP3+
     public void watchLater(User user) {
         return;
 
@@ -43,7 +43,7 @@ public Media(int releaseYear, String name, ArrayList<Category> categories, doubl
     }
 
 
-    // Her viser vi information omkring fimen/serien når den bliver valgt.
+    // Her viser vi information omkring filmen/serien når den bliver valgt.
     // Hvis vi vil ændre på hvordan informationen skrives ud, skal series og movies toString() ændres.
     public void showInfo(){
     TextUI.sendMessage(toString());
