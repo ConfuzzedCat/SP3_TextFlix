@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * public String serializeData(Account data);
 */
 
+//TODO Victor - comments til Parser
+
 public class Parser {
 
     /// CSV

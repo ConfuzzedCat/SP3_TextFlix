@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-//fix
-// fix
 
 public class Movie extends Media {
 

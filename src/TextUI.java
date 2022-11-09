@@ -15,10 +15,11 @@ public class TextUI {
 
      */
 
-    /*recieves a message and displays it to the user
+    /*receives a message and displays it to the user
         prompts the user for one input value
         returns the input
     */
+
     public static void consumeLine(){
         scan.nextLine();
     }
@@ -53,10 +54,13 @@ public class TextUI {
         sendMessage(obj.toString());
     }
 
-    public static void sendMessage(String msg) {
+    //**** bruges til den visuelle del af koden når den køres
+        public static void sendMessage(String msg) {
         System.out.println("*********************");
         System.out.println(msg);
     }
+
+    
     public static Media sendMultipleChoicesMedia(String msg, ArrayList<Media> multipleChoicesMedia){
         sendMessage(msg);
         for(int i = 0; i < multipleChoicesMedia.size(); i++){

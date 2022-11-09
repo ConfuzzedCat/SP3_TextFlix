@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//fix
-// fix
+// Main-menuen når man er videre fra at logge ind.
+// Herinde præsenteres brugeren for diverse muligheder. Settings, media-biblioteket, account og log-out.
+// Programmet er sat op således at det kun - for nu i SP3 - er media-biblioteket der kan tilgåes, og de 3 andre
+// - vil være noget vi f.eks. kunne tilføje til en SP3+ opgave.
+// Vi bruger, ligesom i StartMenu, switch-cases til at læse brugerens input og hvor de vil hen.
 
 public class MainMenu implements Menu {
     public MainMenu() {
@@ -20,12 +23,12 @@ public class MainMenu implements Menu {
        //Choose user currentAccount
         Account a = Main.getCurrentAccount();
 
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("For user Management", "LibraryMenu", "Account", "Log out!"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("User-settings", "Library Menu", "Account", "Log out!"));
 
         boolean tryAgain = true;
 
         while(tryAgain) {
-            int choice = TextUI.getUserInput("Please choose one is the option:", list);
+            int choice = TextUI.getUserInput("Please choose one option: ", list);
             switch (choice) {
                 case 1:
                     TextUI.sendMessage("User-settings");

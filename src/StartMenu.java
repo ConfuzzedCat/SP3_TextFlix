@@ -6,8 +6,10 @@ import java.util.Scanner;
 public class StartMenu implements Menu {
 
 
-    //Tekst menuen når man åbner Textflix. Flowet starter med at logge ind eller registrere sig. Vi bruger switchcase til at få user input,
-    //så programmet går derhen hvor brugeren ønsker.
+    //Tekst menuen når man åbner TextFlix.
+    //Flowet starter med at logge ind eller registrere sig. Vi bruger switch-cases til at få brugerens input,
+    //- så programmet går derhen hvor brugeren ønsker.
+
     public void showMenu(){
 
         TextUI.sendMessage("Welcome to TextFlix!");
