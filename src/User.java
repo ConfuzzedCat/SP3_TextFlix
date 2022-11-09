@@ -2,10 +2,12 @@
 // fix
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User {
     private String nickname;
     private boolean isAdult;
+    private ArrayList<Serie> currentlyWatchingSeries;
 
     public User(String nickname, boolean isAdult) {
         this.nickname = nickname;
@@ -49,8 +51,18 @@ public class User {
         } while (tryAgain);
     }
     public ArrayList<Media> prevWatchedMedia() {
-        
+
 
         return null;
+    }
+
+    //TODO Færdiggør så den gemmer de serier man ser
+    public void addSeriesToCurrentlyWatchingSeries(Serie currentSerie, Season currentSeason, int currentEpisode){
+        for(int i = 0; i < currentlyWatchingSeries.size(); i++){
+            if(currentlyWatchingSeries.get(i).name.equalsIgnoreCase(currentSerie.name)){
+
+            }
+        }
+        currentlyWatchingSeries.add(new Serie(currentSerie.releaseYear,currentSerie.name,currentSerie.categories,currentSerie.rating,currentSerie.endYear,new ArrayList<>(Arrays.asList(currentSeason))));
     }
 }

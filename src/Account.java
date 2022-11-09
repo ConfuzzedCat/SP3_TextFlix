@@ -17,17 +17,8 @@ public class Account {
     private String userName;
     private String password;
     private String email;
-    private ArrayList<Serie> currentlyWatchingSeries;
 
-    //TODO Færdiggør så den gemmer de serier man ser
-    public void addSeriesToCurrentlyWatchingSeries(Serie currentSerie, Season currentSeason, int currentEpisode){
-    for(int i = 0; i < currentlyWatchingSeries.size(); i++){
-        if(currentlyWatchingSeries.get(i).name.equalsIgnoreCase(currentSerie.name)){
 
-        }
-    }
-    currentlyWatchingSeries.add(new Serie(currentSerie.releaseYear,currentSerie.name,currentSerie.categories,currentSerie.rating,currentSerie.endYear,new ArrayList<>(Arrays.asList(currentSeason))));
-    }
     public ArrayList<Serie> getCurrentlyWatchingSeries() {
         return currentlyWatchingSeries;
     }
