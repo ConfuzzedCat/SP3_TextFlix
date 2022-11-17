@@ -26,11 +26,9 @@ public class DatabaseIO {
     public static ArrayList<Media> loadMovieData(){
         ArrayList<Media> results = new ArrayList<>();
         // statement
-        String query = "SELECT * FROM textflix.?";
+        String query = "SELECT * FROM textflix.movies;";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,"moVies");
-
             // resultset
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()) {

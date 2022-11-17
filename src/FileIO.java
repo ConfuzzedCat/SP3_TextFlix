@@ -16,6 +16,7 @@ public class FileIO {
 
         try {
             Scanner input = new Scanner(file);
+            String header = input.nextLine(); // ignore header
             while (input.hasNextLine()) {
                 data.add(input.nextLine());
             }
