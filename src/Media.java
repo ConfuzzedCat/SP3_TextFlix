@@ -12,7 +12,7 @@ public abstract class Media {
 
     double rating;
 
-public Media(int releaseYear, String name, ArrayList<Category> categories, double rating){
+public Media(String name, int releaseYear, ArrayList<Category> categories, double rating){
 
     this.releaseYear = releaseYear;
     this.name = name;

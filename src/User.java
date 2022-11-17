@@ -99,7 +99,7 @@ public class User {
 
             }
         }
-        currentlyWatchingSeries.add(new Serie(currentSerie.releaseYear,currentSerie.name,
+        currentlyWatchingSeries.add(new Serie(currentSerie.name, currentSerie.releaseYear,
                 currentSerie.categories,currentSerie.rating,currentSerie.endYear,new ArrayList<>(Arrays.asList(currentSeason))));
     }
 }

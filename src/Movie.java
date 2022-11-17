@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Movie extends Media {
 
-    public Movie(int releaseYear, String name, ArrayList<Category> category, double rating) {
-        super(releaseYear, name, category, rating);
+    public Movie(String name, int releaseYear, ArrayList<Category> category, double rating) {
+        super(name, releaseYear, category, rating);
     }
 
 //Det "visuelle" i terminalen når det køres. Vigtigt for brugeren at det står pænt og overskueligt.

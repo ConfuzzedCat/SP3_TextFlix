@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FileIO {
 
-
+    //TODO: læs header fra csv filer
     public static ArrayList<String> readDataLines(String path) {
 
         File file = new File(path);

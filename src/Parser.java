@@ -43,10 +43,10 @@ public class Parser {
 
             if(values.length > 4){
                 ArrayList<Season> seasons = parseSeasonDataFromCsv(values[4]);
-                m = new Serie(releaseYear, mediaName, categories, rating, endYear, seasons);
+                m = new Serie(mediaName, releaseYear, categories, rating, endYear, seasons);
             }
             else {
-                m = new Movie(releaseYear, mediaName, categories, rating);
+                m = new Movie(mediaName, releaseYear, categories, rating);
             }
             media.add(m);
         }

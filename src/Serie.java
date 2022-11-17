@@ -5,8 +5,8 @@ public class Serie extends Media {
 
     ArrayList<Season> Seasons;
     int endYear;
-    public Serie(int releaseYear, String name, ArrayList<Category> category, double rating, int endYear, ArrayList<Season> seasons) {
-        super(releaseYear, name, category, rating);
+    public Serie(String name, int releaseYear, ArrayList<Category> category, double rating, int endYear, ArrayList<Season> seasons) {
+        super(name, releaseYear, category, rating);
         this.endYear = endYear;
         Seasons = seasons;
     }
