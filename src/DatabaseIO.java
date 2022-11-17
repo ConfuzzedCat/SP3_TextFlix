@@ -53,22 +53,7 @@ public class DatabaseIO implements IO {
         String query = "SELECT * FROM textflix.series;";
         try {
             ResultSet resultSet = sendQuery(query);
-            while(resultSet.next()) {
-                String Name = resultSet.getString("Name");
-                String stringYears = resultSet.getString("Years");
-                String stringCategory = resultSet.getString("Category");
-                double Rating = resultSet.getDouble("Rating");
-                String stringSeasons = resultSet.getString("Seasons");
-                ArrayList<Category> categories = Parser.getCategories(stringCategory);
-                ArrayList<Season> seasons = Parser.parseSeasonDataFromCsv(stringSeasons);
-
-                int2 years = Parser.getYears(stringYears);
-                int releaseYear = years.a;
-                int endYear = years.b;
-                //Arrayliste af vores media
-                Media m = new Serie(Name, releaseYear, categories, Rating, endYear, seasons);
-                results.add(m);
-            }
+            return Parser.parseSerieDataFromResultSet(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,8 +72,11 @@ public class DatabaseIO implements IO {
         }
         throw new SQLException("No results found. :(");
     }
-    public static ResultSet sendQuery(PreparedStatement statement) throws SQLException {
+    public static ResultSet sendQuery(String query, String data) throws SQLException {
         try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, data);
+
             // resultset
             return statement.executeQuery();
         }

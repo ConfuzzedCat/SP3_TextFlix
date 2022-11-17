@@ -7,6 +7,8 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.StringReader;
 import java.lang.reflect.Type;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -103,5 +105,29 @@ public class Parser {
             returnData.add(new Season(Integer.parseInt(seasonAndEpisode[0].replace(" ","")), Integer.parseInt(seasonAndEpisode[1].replace(" ",""))));
         }
         return returnData;
+    }
+    public static ArrayList<Media> parseSerieDataFromResultSet(ResultSet resultSet) {
+        ArrayList<Media> results = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                String Name = resultSet.getString("Name");
+                String stringYears = resultSet.getString("Years");
+                String stringCategory = resultSet.getString("Category");
+                double Rating = resultSet.getDouble("Rating");
+                String stringSeasons = resultSet.getString("Seasons");
+                ArrayList<Category> categories = Parser.getCategories(stringCategory);
+                ArrayList<Season> seasons = Parser.parseSeasonDataFromCsv(stringSeasons);
+
+                int2 years = Parser.getYears(stringYears);
+                int releaseYear = years.a;
+                int endYear = years.b;
+                //Arrayliste af vores media
+                Media m = new Serie(Name, releaseYear, categories, Rating, endYear, seasons);
+                results.add(m);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
     }
 }
