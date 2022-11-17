@@ -32,11 +32,7 @@ public class Parser {
                 }
             }
 
-            String[] categoriesData = values[2].split(",");
-            ArrayList<Category> categories = new ArrayList<>();
-            for(String s_ : categoriesData) {
-                categories.add(Category.findCategory(s_));
-            }
+            ArrayList<Category> categories = getCategories(values[2]);
 
             double rating = Double.parseDouble(values[3].replace(",","."));
             Media m;
@@ -51,6 +47,16 @@ public class Parser {
             media.add(m);
         }
         return media;
+    }
+
+    // String -> Arraylist<Category>
+    public static ArrayList<Category> getCategories(String data) {
+        String[] categoriesData = data.split(",");
+        ArrayList<Category> categories = new ArrayList<>();
+        for(String s : categoriesData) {
+            categories.add(Category.findCategory(s));
+        }
+        return categories;
     }
 
     /// Json

@@ -10,10 +10,13 @@ public class DatabaseIO {
     public static void setup(){
         hostname = "jdbc:mysql://localhost/textflix?" + "autoReconnect=true&useSSL=false";
         establishConnection();
+        for (Media m : loadMovieData()){
+            m.watch();
+        }
     }
     private static void establishConnection() {
         // connection
-        password = TextUI.getUserInput("Skriv din MySQL server password.");
+        password = TextUI.getUserInput("Skriv dit MySQL server password.");
         try {
             connection = DriverManager.getConnection(hostname, username, password);
         } catch (SQLException e) {
@@ -33,13 +36,13 @@ public class DatabaseIO {
             while(resultSet.next()) {
                 String Name = resultSet.getString("Name");
                 int Years = resultSet.getInt("ReleaseYear");
-                String Category = resultSet.getString("Category");
+                String stringCategory = resultSet.getString("Category");
                 double Rating = resultSet.getDouble("Rating");
                 //String Seasons = resultSet.getString("Seasons");
+                ArrayList<Category> categories = Parser.getCategories(stringCategory);
 
-
-                //Arrayliste af vores byer
-                Media m = new Movie(Name, Years, Category, Rating);
+                //Arrayliste af vores media
+                Media m = new Movie(Name, Years, categories, Rating);
                 results.add(m);
             }
 
