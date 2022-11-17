@@ -1,7 +1,7 @@
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DatabaseIO {
+public class DatabaseIO implements IO {
     private static String hostname;
     private static String username = "root";
     private static String password;
@@ -10,7 +10,7 @@ public class DatabaseIO {
     public static void setup(){
         hostname = "jdbc:mysql://localhost/textflix?" + "autoReconnect=true&useSSL=false";
         establishConnection();
-        for (Media m : loadMovieData()){
+        for (Media m : loadSerieData()){
             m.watch();
         }
     }
@@ -28,9 +28,7 @@ public class DatabaseIO {
         // statement
         String query = "SELECT * FROM textflix.movies;";
         try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            // resultset
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = sendQuery(query);
             while(resultSet.next()) {
                 String Name = resultSet.getString("Name");
                 int Years = resultSet.getInt("ReleaseYear");
@@ -48,6 +46,57 @@ public class DatabaseIO {
             e.printStackTrace();
         }
         return results;
+    }
+    public static ArrayList<Media> loadSerieData(){
+        ArrayList<Media> results = new ArrayList<>();
+        // statement
+        String query = "SELECT * FROM textflix.series;";
+        try {
+            ResultSet resultSet = sendQuery(query);
+            while(resultSet.next()) {
+                String Name = resultSet.getString("Name");
+                String stringYears = resultSet.getString("Years");
+                String stringCategory = resultSet.getString("Category");
+                double Rating = resultSet.getDouble("Rating");
+                String stringSeasons = resultSet.getString("Seasons");
+                ArrayList<Category> categories = Parser.getCategories(stringCategory);
+                ArrayList<Season> seasons = Parser.parseSeasonDataFromCsv(stringSeasons);
+
+                int2 years = Parser.getYears(stringYears);
+                int releaseYear = years.a;
+                int endYear = years.b;
+                //Arrayliste af vores media
+                Media m = new Serie(Name, releaseYear, categories, Rating, endYear, seasons);
+                results.add(m);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+    public static ResultSet sendQuery(String query) throws SQLException {
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            // resultset
+            return statement.executeQuery();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        throw new SQLException("No results found. :(");
+    }
+    public static ResultSet sendQuery(PreparedStatement statement) throws SQLException {
+        try {
+            // resultset
+            return statement.executeQuery();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        throw new SQLException("No results found. :(");
     }
 
 }

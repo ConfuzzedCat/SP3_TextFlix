@@ -22,16 +22,9 @@ public class Parser {
             String s = data.get(i);
             String[] values = s.split(";");
             String mediaName = values[0];
-            String[] years = values[1].split("-");
-            int releaseYear = Integer.parseInt(years[0].replace(" ",""));
-            int endYear = -1;
-            if(years.length > 1){
-                String temp = years[1].replace(" ","");
-                if(!temp.isEmpty()) {
-                    endYear = Integer.parseInt(temp);
-                }
-            }
-
+            int2 years = getYears(values[1]);
+            int releaseYear = years.a;
+            int endYear = years.b;
             ArrayList<Category> categories = getCategories(values[2]);
 
             double rating = Double.parseDouble(values[3].replace(",","."));
@@ -57,6 +50,18 @@ public class Parser {
             categories.add(Category.findCategory(s));
         }
         return categories;
+    }
+    public static int2 getYears(String data){
+        String[] years = data.split("-");
+        int releaseYear = Integer.parseInt(years[0].replace(" ",""));
+        int endYear = -1;
+        if(years.length > 1){
+            String temp = years[1].replace(" ","");
+            if(!temp.isEmpty()) {
+                endYear = Integer.parseInt(temp);
+            }
+        }
+        return new int2(releaseYear, endYear);
     }
 
     /// Json
@@ -90,7 +95,7 @@ public class Parser {
     }
 
     /// Misc parser
-    private static ArrayList<Season> parseSeasonDataFromCsv(String data) {
+    public static ArrayList<Season> parseSeasonDataFromCsv(String data) {
         ArrayList<Season> returnData = new ArrayList<>();
         String[] values = data.split(",");
         for(int i = 0; i < values.length; i++){
