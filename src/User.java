@@ -5,6 +5,7 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class User {
     private String nickname;
@@ -70,8 +71,8 @@ public class User {
 
         public void addToWatchedMedia(Media watchedMedia) {
         if(!prevWatchedMedia.contains(watchedMedia)){
-        prevWatchedMedia.add(watchedMedia);
-    }
+            prevWatchedMedia.add(watchedMedia);
+        }
 
     }
     public void showPreWatchedMedia(){

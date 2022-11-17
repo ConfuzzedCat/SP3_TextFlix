@@ -28,17 +28,14 @@ public Media(int releaseYear, String name, ArrayList<Category> categories, doubl
 
 // Metoderne bliver brugt i SP3+
     public void watchLater(User user) {
-        return;
 
     }
 
     public void removeFromWatchLater(User user){
-        return;
 
     }
 
     public void addToPrevWatched(User user){
-        return;
 
     }
 
