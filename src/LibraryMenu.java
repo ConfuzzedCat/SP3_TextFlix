@@ -1,8 +1,3 @@
-//fix
-//
-
-
-import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -41,6 +36,10 @@ public class LibraryMenu implements Menu {
 
 
         ArrayList<Media> searchResult = searchTextOrCategory();
+        if(searchResult == null || searchResult.size() < 1){
+            TextUI.sendMessage("No movie found.");
+            new LibraryMenu();
+        }
         Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Choose a movie.",searchResult);
 
 

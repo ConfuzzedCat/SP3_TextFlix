@@ -7,8 +7,8 @@ public class Main {
 
 
 
-        new LibraryMenu();
-        //Account.saveAccountData();
+        new StartMenu();
+        io.saveAccountData();
     }
 
     private static Account currentAccount;

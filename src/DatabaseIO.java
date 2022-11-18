@@ -25,9 +25,11 @@ public class DatabaseIO implements IO {
 
     @Override
     public void saveAccountData() {
-        //TODO: Save account data on SQL server.
-        Account currentAccount = Main.getCurrentAccount();
-        String query = "UPDATE textflix.accounts SET users='"+Parser.serializeData(currentAccount.users, false) + "' WHERE AccountID=" + currentAccount.getSQLID();
+        Account a = Main.getCurrentAccount();
+        String query = "INSERT INTO textflix.acccounts (users, firstName, lastName, userName, password, email) VALUES ('" + Parser.serializeData(a.users, false) + "','" + a.firstName+ "','" +a.lastName+ "','" +a.userName+ "','"+a.password+"','"+a.email +"');";
+        if(a.getSQLID() < 1) {
+            query = "UPDATE textflix.accounts SET users='" + Parser.serializeData(a.users, false) + "' WHERE AccountID=" + a.getSQLID();
+        }
         try{
             sendQuery(query);
         }
@@ -125,7 +127,6 @@ public class DatabaseIO implements IO {
         }
         throw new SQLException("No results found. :(");
     }
-
 
 
 }
