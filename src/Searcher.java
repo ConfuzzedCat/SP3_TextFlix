@@ -9,9 +9,10 @@ public class Searcher {
         return false;
     }
 
-    public ArrayList<Media> searchMedia(String prompt, IO io){
+    public ArrayList<Media> searchMedia(String prompt){
         ArrayList<Media> result = new ArrayList<>();
-        if(false){ //checkForDatabase(io)){
+        /*
+        if(checkForDatabase(io)){
 
             //TODO: spørg om det skal være film, serie eller begge.
             String data = "%"+ prompt + "%";
@@ -21,7 +22,7 @@ public class Searcher {
             } catch (SQLException e){
                 e.printStackTrace();
             }
-        }
+        }*/
 
         //bruge fileIO
         //parse prompt
@@ -32,5 +33,20 @@ public class Searcher {
           }
         }
         return result;
+    }
+    public ArrayList<Media> searchMedia(Category c) {
+
+        ArrayList<Media> returnMedia = new ArrayList<>();
+        for(Media m : Catalogue.allMedia){
+            for (Category category: m.categories) {
+                if(category == c){
+
+                    returnMedia.add(m);
+                }
+            }
+        }
+
+        return returnMedia;
+
     }
 }

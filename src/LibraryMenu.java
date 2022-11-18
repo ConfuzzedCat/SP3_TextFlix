@@ -47,7 +47,7 @@ public class LibraryMenu implements Menu {
         String input = TextUI.getUserInput("Pick a category.");
         Category searchCategory = Category.findCategory(input);
 
-        ArrayList<Media> searchResult = Catalogue.searchMedia(searchCategory);
+        ArrayList<Media> searchResult = new Searcher().searchMedia(searchCategory);
         Media moviePickChoice = TextUI.sendMultipleChoicesMedia("Choose a movie.",searchResult);
 
 

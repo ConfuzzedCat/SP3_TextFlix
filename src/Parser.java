@@ -152,9 +152,10 @@ public class Parser {
                 String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
                 String jsonUser = resultSet.getString("users");
+                int sqlID = resultSet.getInt("AccountID");
                 ArrayList<User> users = parseDataFromJsonUser(jsonUser);
                 //Arrayliste af vores media
-                Account a = new Account(firstname, lastname, username, password, email, users);
+                Account a = new Account(firstname, lastname, username, password, email, users, sqlID);
                 results.add(a);
             }
         } catch(SQLException e) {

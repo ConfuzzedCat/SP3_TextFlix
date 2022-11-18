@@ -26,6 +26,8 @@ public class Account {
     public String password;
     public String email;
 
+    private int SQLID;
+
 
 
 
@@ -36,6 +38,15 @@ public class Account {
         this.password = password;
         this.email = email;
         this.users = users;
+    }
+    public Account(String firstName, String lastName, String userName, String password, String email, ArrayList<User> users, int id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.users = users;
+        this.SQLID = id;
     }
     private Account(){
     }
@@ -105,5 +116,9 @@ public class Account {
     }
     public void addUser(String nickname, boolean isAdult){
         users.add(new User(nickname, isAdult));
+    }
+
+    public int getSQLID() {
+        return SQLID;
     }
 }
