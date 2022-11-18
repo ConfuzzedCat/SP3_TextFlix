@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileIO {
+public class FileIO implements IO {
 
     //TODO: læs header fra csv filer
-    public static ArrayList<String> readDataLines(String path) {
+    private static ArrayList<String> readDataLines(String path) {
 
         File file = new File(path);
 
@@ -26,7 +26,7 @@ public class FileIO {
         return data;
     }
 
-    public static String readData(String path) {
+    private static String readData(String path) {
 
         File file = new File(path);
 
@@ -43,7 +43,7 @@ public class FileIO {
         return data;
     }
 
-    public static boolean writeToFile(String path, String content) {
+    private static boolean writeToFile(String path, String content) {
 
         try {
             FileWriter writer = new FileWriter(path);
@@ -56,5 +56,20 @@ public class FileIO {
         }
 
         return true;
+    }
+
+    @Override
+    public void setup() {
+        //TODO: ret til
+        ArrayList<String> data = FileIO.readDataLines("Data/Movies.csv");
+        ArrayList<String> dataSeries = FileIO.readDataLines("Data/Series.csv");
+        data.addAll(dataSeries); // Adder alt fra dataSeries over i data, så begge ting bliver gemt under data.
+
+        allMedia = Parser.parseDataFromCsvMedia(data);
+    }
+
+    @Override
+    public void saveAccountData() {
+
     }
 }

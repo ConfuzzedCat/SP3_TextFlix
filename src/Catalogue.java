@@ -23,11 +23,7 @@ public static ArrayList<Media> searchMedia(Category c) {
 
 public static ArrayList<Media> allMedia;
 public static void setupAllMedia(){
-    ArrayList<String> data = FileIO.readDataLines("Data/Movies.csv");
-    ArrayList<String> dataSeries = FileIO.readDataLines("Data/Series.csv");
-    data.addAll(dataSeries); // Adder alt fra dataSeries over i data, så begge ting bliver gemt under data.
 
-    allMedia = Parser.parseDataFromCsvMedia(data);
 }
 }
 

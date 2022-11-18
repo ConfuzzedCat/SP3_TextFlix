@@ -5,12 +5,15 @@ import java.util.Arrays;
 
 
 public class Account {
-    private static ArrayList<Account> accounts = new ArrayList<>();
-
-    public static void loadAccounts() {
-        String jsonAccounts = FileIO.readData("Data/Accounts.json");
-        accounts = Parser.parseDataFromJsonAccount(jsonAccounts);
+    public static ArrayList<Account> getAccounts() {
+        return accounts;
     }
+
+    public static void setAccounts(ArrayList<Account> accounts) {
+        Account.accounts = accounts;
+    }
+
+    private static ArrayList<Account> accounts = new ArrayList<>();
 
     public ArrayList<User> getUsers() {
         return users;
@@ -50,8 +53,9 @@ public class Account {
         accounts.add(a);
         saveAccountData();
     }
-    public static void saveAccountData(){
-        FileIO.writeToFile("Data/Accounts.json", Parser.serializeAccountData(accounts));
+    public static void saveAccountData(IO  io){
+        //FileIO.writeToFile("Data/Accounts.json", Parser.serializeAccountData(accounts));
+        //TODO: Bruge io saveAccountData()
     }
     public static Account register(String username, String password){
         Account newAccount = new Account(username, password);

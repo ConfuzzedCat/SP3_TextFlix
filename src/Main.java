@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        DatabaseIO.setup();
+        new DatabaseIO().setup();
         Searcher search = new Searcher();
         for(Media m : search.searchMedia("we",new DatabaseIO())){
             m.watch();

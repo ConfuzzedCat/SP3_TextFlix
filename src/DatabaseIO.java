@@ -1,3 +1,4 @@
+import javax.print.attribute.standard.MediaPrintableArea;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -7,14 +8,24 @@ public class DatabaseIO implements IO {
     private static String password;
     private static Connection connection;
 
-    public static void setup(){
+    public void setup(){
         hostname = "jdbc:mysql://localhost/textflix?" + "autoReconnect=true&useSSL=false";
         establishConnection();
-        for (Media m : loadSerieData()){
-            m.watch();
-        }
+        ArrayList<Media> movies = loadMovieData();
+        ArrayList<Media> series = loadSerieData();
+        movies.addAll(series);
+        Catalogue.allMedia = movies;
+
+        Account.setAccounts();
+
     }
-    private static void establishConnection() {
+
+    @Override
+    public void saveAccountData() {
+        //TODO: Save account data on SQL server.
+    }
+
+    private void establishConnection() {
         // connection
         password = TextUI.getUserInput("Skriv dit MySQL server password.");
         try {
@@ -23,7 +34,11 @@ public class DatabaseIO implements IO {
             e.printStackTrace();
         }
     }
-    public static ArrayList<Media> loadMovieData(){
+    private ArrayList<Account> loadAccountData(){
+        
+    }
+
+    private ArrayList<Media> loadMovieData(){
         ArrayList<Media> results = new ArrayList<>();
         // statement
         String query = "SELECT * FROM textflix.movies;";
@@ -47,7 +62,8 @@ public class DatabaseIO implements IO {
         }
         return results;
     }
-    public static ArrayList<Media> loadSerieData(){
+
+    private ArrayList<Media> loadSerieData(){
         ArrayList<Media> results = new ArrayList<>();
         // statement
         String query = "SELECT * FROM textflix.series;";
@@ -60,6 +76,7 @@ public class DatabaseIO implements IO {
         }
         return results;
     }
+
     public static ResultSet sendQuery(String query) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -72,6 +89,7 @@ public class DatabaseIO implements IO {
         }
         throw new SQLException("No results found. :(");
     }
+
     public static ResultSet sendQuery(String query, String data) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement(query);

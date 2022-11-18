@@ -79,6 +79,17 @@ public class Parser {
 
         return a;
     }
+    public static ArrayList<User> parseDataFromJsonUser(String data){
+        Gson gson = new Gson();
+        Type listType = new TypeToken<ArrayList<User>>(){}.getType();
+
+        ArrayList<User> users = gson.fromJson(data, listType);
+        if(users == null){
+            return new ArrayList<>();
+        }
+
+        return users;
+    }
 
     // Object -> Json
     public static String serializeMediaData(ArrayList<Media> data){
@@ -124,6 +135,27 @@ public class Parser {
                 //Arrayliste af vores media
                 Media m = new Serie(Name, releaseYear, categories, Rating, endYear, seasons);
                 results.add(m);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+
+    public static ArrayList<Account> parseAccountDataFromResultSet(ResultSet resultSet) {
+        ArrayList<Account> results = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                String firstname = resultSet.getString("firstName");
+                String lastname = resultSet.getString("lastName");
+                String username = resultSet.getString("userName");
+                String password = resultSet.getString("password");
+                String email = resultSet.getString("email");
+                String jsonUser = resultSet.getString("users");
+                ArrayList<User> users = parseDataFromJsonUser(jsonUser);
+                //Arrayliste af vores media
+                Account a = new Account(firstname, lastname, username, password, email, users);
+                results.add(a);
             }
         } catch(SQLException e) {
             e.printStackTrace();
