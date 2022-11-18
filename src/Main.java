@@ -1,19 +1,24 @@
 public class Main {
     public static void main(String[] args) {
-        new DatabaseIO().setup();
-        Searcher search = new Searcher();
-        for(Media m : search.searchMedia("we",new DatabaseIO())){
+        io = new DatabaseIO(); // styrer om det skal være fra SQL server eller csv filer. DatabaseIO er sql/FileIO er csv.
+
+        io.setup();
+        Searcher searcher = new Searcher();
+
+        for (Media m: searcher.searchMedia("dr", io)) {
             m.watch();
         }
-        setup();
         new StartMenu();
-        Account.saveAccountData();
+        //Account.saveAccountData();
     }
-    public static void setup(){
-        Account.loadAccounts();
-        Catalogue.setupAllMedia();
-    }
+
     private static Account currentAccount;
+
+    public static IO getIo() {
+        return io;
+    }
+
+    private static IO io;
 
     public static Account getCurrentAccount() {
         return currentAccount;

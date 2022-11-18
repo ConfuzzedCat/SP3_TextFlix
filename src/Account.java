@@ -51,7 +51,7 @@ public class Account {
     }
     public static void AddAccountToList(Account a){
         accounts.add(a);
-        saveAccountData();
+        //saveAccountData();
     }
     public static void saveAccountData(IO  io){
         //FileIO.writeToFile("Data/Accounts.json", Parser.serializeAccountData(accounts));
@@ -73,6 +73,9 @@ public class Account {
     public static Account login(){
         String username = TextUI.getUserInput("Please type your username.");
         String password = TextUI.getUserInput("Please type your password.");
+        if(Main.getIo().getClass() == DatabaseIO.class){
+            return DatabaseIO.login(username, password);
+        }
         if( accounts == null || accounts.size() == 0){
             TextUI.sendMessage("No accounts in database, will start registering you now.");
             return register(username, password);

@@ -43,6 +43,7 @@ public Media(String name, int releaseYear, ArrayList<Category> categories, doubl
     // Her viser vi information omkring filmen/serien når den bliver valgt.
     // Hvis vi vil ændre på hvordan informationen skrives ud, skal series og movies toString() ændres.
     public void showInfo(){
+
     TextUI.sendMessage(toString());
 
     }

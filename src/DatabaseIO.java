@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.MediaPrintableArea;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -8,6 +7,10 @@ public class DatabaseIO implements IO {
     private static String password;
     private static Connection connection;
 
+    public static Account login(String username, String password) {
+        return null;
+    }
+
     public void setup(){
         hostname = "jdbc:mysql://localhost/textflix?" + "autoReconnect=true&useSSL=false";
         establishConnection();
@@ -16,7 +19,7 @@ public class DatabaseIO implements IO {
         movies.addAll(series);
         Catalogue.allMedia = movies;
 
-        Account.setAccounts();
+        Account.setAccounts(loadAccountData());
 
     }
 
@@ -35,7 +38,17 @@ public class DatabaseIO implements IO {
         }
     }
     private ArrayList<Account> loadAccountData(){
-        
+        ArrayList<Account> results = new ArrayList<>();
+        // statement
+        String query = "SELECT * FROM textflix.accounts;";
+        try {
+            ResultSet resultSet = sendQuery(query);
+            return Parser.parseAccountDataFromResultSet(resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
     }
 
     private ArrayList<Media> loadMovieData(){
@@ -104,6 +117,8 @@ public class DatabaseIO implements IO {
         }
         throw new SQLException("No results found. :(");
     }
+
+
 
 }
 

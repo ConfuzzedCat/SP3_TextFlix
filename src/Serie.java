@@ -33,6 +33,6 @@ public class Serie extends Media {
 
     @Override
     public void watch() {
-        TextUI.sendMessage("You are now watching: "+ name);
+        TextUI.sendMessage("You are now watching serie: "+ name);
     }
 }

@@ -65,7 +65,7 @@ public class FileIO implements IO {
         ArrayList<String> dataSeries = FileIO.readDataLines("Data/Series.csv");
         data.addAll(dataSeries); // Adder alt fra dataSeries over i data, så begge ting bliver gemt under data.
 
-        allMedia = Parser.parseDataFromCsvMedia(data);
+        //allMedia = Parser.parseDataFromCsvMedia(data);
     }
 
     @Override

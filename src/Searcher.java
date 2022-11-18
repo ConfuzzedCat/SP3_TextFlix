@@ -11,7 +11,7 @@ public class Searcher {
 
     public ArrayList<Media> searchMedia(String prompt, IO io){
         ArrayList<Media> result = new ArrayList<>();
-        if(checkForDatabase(io)){
+        if(false){ //checkForDatabase(io)){
 
             //TODO: spørg om det skal være film, serie eller begge.
             String data = "%"+ prompt + "%";
@@ -22,8 +22,15 @@ public class Searcher {
                 e.printStackTrace();
             }
         }
+
         //bruge fileIO
         //parse prompt
+        prompt = "(?i).*" + prompt +".*";
+        for (Media m : Catalogue.allMedia) {
+          if(m.name.matches(prompt)){
+              result.add(m);
+          }
+        }
         return result;
     }
 }
