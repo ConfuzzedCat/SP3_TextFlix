@@ -14,7 +14,7 @@ public class Searcher {
         /*
         if(checkForDatabase(io)){
 
-            //TODO: spørg om det skal være film, serie eller begge.
+            //: spørg om det skal være film, serie eller begge.
             String data = "%"+ prompt + "%";
             try {
                 ResultSet resultSet = DatabaseIO.sendQuery("SELECT * FROM textflix.series WHERE NAME LIKE ?",  data);

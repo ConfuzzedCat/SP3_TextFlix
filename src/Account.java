@@ -62,11 +62,6 @@ public class Account {
     }
     public static void AddAccountToList(Account a){
         accounts.add(a);
-        //saveAccountData();
-    }
-    public static void saveAccountData(IO  io){
-        //FileIO.writeToFile("Data/Accounts.json", Parser.serializeAccountData(accounts));
-        //TODO: Bruge io saveAccountData()
     }
     public static Account register(String username, String password){
         Account newAccount = new Account(username, password);

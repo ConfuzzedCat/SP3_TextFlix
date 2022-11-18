@@ -26,8 +26,14 @@ public class DatabaseIO implements IO {
     @Override
     public void saveAccountData() {
         //TODO: Save account data on SQL server.
-
-
+        Account currentAccount = Main.getCurrentAccount();
+        String query = "UPDATE textflix.accounts SET users='"+Parser.serializeData(currentAccount.users, false) + "' WHERE AccountID=" + currentAccount.getSQLID();
+        try{
+            sendQuery(query);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     private void establishConnection() {

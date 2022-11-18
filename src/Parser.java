@@ -98,10 +98,19 @@ public class Parser {
     public static String serializeAccountData(ArrayList<Account> data){
         return serializeData(data);
     }
-    private static String serializeData(Object obj){
+    public static String serializeData(Object obj){
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
 
+        Gson gson = builder.create();
+
+        return gson.toJson(obj);
+    }
+    public static String serializeData(Object obj, boolean setPrettyPrinting){
+        GsonBuilder builder = new GsonBuilder();
+        if(setPrettyPrinting) {
+            builder.setPrettyPrinting();
+        }
         Gson gson = builder.create();
 
         return gson.toJson(obj);

@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class FileIO implements IO {
 
-    //TODO: læs header fra csv filer
     private static ArrayList<String> readDataLines(String path) {
 
         File file = new File(path);
@@ -60,16 +59,17 @@ public class FileIO implements IO {
 
     @Override
     public void setup() {
-        //TODO: ret til
         ArrayList<String> data = FileIO.readDataLines("Data/Movies.csv");
         ArrayList<String> dataSeries = FileIO.readDataLines("Data/Series.csv");
         data.addAll(dataSeries); // Adder alt fra dataSeries over i data, så begge ting bliver gemt under data.
 
-        //allMedia = Parser.parseDataFromCsvMedia(data);
+        Catalogue.allMedia = Parser.parseDataFromCsvMedia(data);
+
+
     }
 
     @Override
     public void saveAccountData() {
-
+        writeToFile("Data/Accounts.json", Parser.serializeAccountData(Account.getAccounts()));
     }
 }
