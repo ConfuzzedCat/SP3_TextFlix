@@ -5,10 +5,9 @@ public class Main {
         io.setup();
         Searcher searcher = new Searcher();
 
-        for (Media m: searcher.searchMedia("dr", io)) {
-            m.watch();
-        }
-        new StartMenu();
+
+
+        new LibraryMenu();
         //Account.saveAccountData();
     }
 
