@@ -38,7 +38,6 @@ public class DatabaseIO implements IO {
         }
         try{
             int r = sendStatement(preparedQeury(query, data));
-            TextUI.sendMessage("LOG: Sent query: \"" + query + "\". Returned: " + r);
         }
         catch (SQLException e){
             e.printStackTrace();
