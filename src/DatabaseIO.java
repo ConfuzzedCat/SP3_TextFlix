@@ -9,6 +9,26 @@ public class DatabaseIO implements IO {
     private static Connection connection;
 
     public static Account login(String username, String password) {
+        String query = "SELECT * FROM textflix.accounts WHERE userName = ?";
+        try{
+
+            ResultSet resultSet = sendQuery(query, username);
+            if(resultSet.next()) {
+                if (resultSet.getString("password").equals(password)) {
+                    ArrayList<Account> accounts = Parser.parseAccountDataFromResultSet(sendQuery(query, username));
+                    TextUI.sendMessage(accounts.toString());
+                    return accounts.get(0);
+                }
+                for (int i = 0; i < 3; i++) {
+                    String input = TextUI.getUserInput("Password was incorrect. Try again: ");
+                    if (password.equals(resultSet.getString("password"))) {
+                        return Parser.parseAccountDataFromResultSet(resultSet).get(0);
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 

@@ -1,8 +1,3 @@
-import java.util.Scanner;
-
-//fix
-// fix
-
 public class StartMenu implements Menu {
 
 
@@ -19,7 +14,12 @@ public class StartMenu implements Menu {
 
         switch(choice.toLowerCase()){
             case "login":
-                Main.setCurrentAccount(Account.login());
+                Account a = Account.login();
+                if(a == null){
+                    TextUI.sendMessage("Too many incorrect tries...");
+                    showMenu();
+                }
+                Main.setCurrentAccount(a);
                 new MainMenu();
 
                 break;
