@@ -45,7 +45,7 @@ public class StartMenu implements Menu {
 
     @Override
     public void goBack() {
-    System.exit(1);
+    return;
     }
 
 

@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DatabaseIO implements IO {
     private static String hostname;
@@ -26,12 +27,18 @@ public class DatabaseIO implements IO {
     @Override
     public void saveAccountData() {
         Account a = Main.getCurrentAccount();
-        String query = "INSERT INTO textflix.acccounts (users, firstName, lastName, userName, password, email) VALUES ('" + Parser.serializeData(a.users, false) + "','" + a.firstName+ "','" +a.lastName+ "','" +a.userName+ "','"+a.password+"','"+a.email +"');";
-        if(a.getSQLID() < 1) {
-            query = "UPDATE textflix.accounts SET users='" + Parser.serializeData(a.users, false) + "' WHERE AccountID=" + a.getSQLID();
+        ArrayList<String> data = new ArrayList<>(Arrays.asList(Parser.serializeData(a.users, false), a.firstName, a.lastName, a.userName, a.password, a.email));
+        String query = "INSERT INTO textflix.accounts (users, firstName, lastName, userName, password, email) VALUES (?,?,?,?,?,?);";
+
+        if(a.getSQLID() > 1) {
+            data.clear();
+            query = "UPDATE textflix.accounts SET users=? WHERE AccountID=?";
+            data.add(Parser.serializeData(a.users, false));
+            data.add(String.valueOf(a.getSQLID()));
         }
         try{
-            sendQuery(query);
+            int r = sendStatement(preparedQeury(query, data));
+            TextUI.sendMessage("LOG: Sent query: \"" + query + "\". Returned: " + r);
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -112,6 +119,13 @@ public class DatabaseIO implements IO {
         }
         throw new SQLException("No results found. :(");
     }
+    public static int sendStatement(PreparedStatement statement) throws SQLException {
+        try {
+            return statement.executeUpdate();
+        } catch (SQLException e){
+            throw e;
+        }
+    }
 
     public static ResultSet sendQuery(String query, String data) throws SQLException {
         try {
@@ -126,6 +140,19 @@ public class DatabaseIO implements IO {
             e.printStackTrace();
         }
         throw new SQLException("No results found. :(");
+    }
+
+    public static PreparedStatement preparedQeury(String query, ArrayList<String> data) throws SQLException{
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            for (int i = 1; i <= data.size(); i++){
+                statement.setString(i, data.get(i-1));
+            }
+            return statement;
+
+        } catch (SQLException e){
+            throw e;
+        }
     }
 
 
