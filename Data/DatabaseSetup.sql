@@ -1,10 +1,3 @@
-# SP3_TextFlix
-
-
-## SP3+
-Vi bruger vores egen schema i sql serveren.
-bruge denne sql kode eller ``DatabaseSetup.sql`` i mappen ``Data``
-```roomsql
 CREATE SCHEMA `textflix` ;
 USE `textflix`;
 CREATE TABLE `accounts` (
@@ -34,4 +27,3 @@ CREATE TABLE `series` (
   `SerieID` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`SerieID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-```
